@@ -1,11 +1,14 @@
 <?php 
 require_once 'inc/connect.php';
 
-$list = $bdd->prepare('SELECT * FROM products P, category C WHERE P.pdt_cat_id = C.cat_id');
+$list = $bdd->prepare('SELECT * FROM products, category WHERE pdt_cat_id = cat_id');
 if($list->execute())
 {
-	$list->fetchAll(PDO::FETCH_ASSOC);
-	var_dump($list);
+	$res = $list->fetchAll(PDO::FETCH_ASSOC);
+}
+else
+{
+	var_dump($list->errorInfo());
 }
 
 ?><!DOCTYPE html>
@@ -21,16 +24,20 @@ if($list->execute())
 		include 'inc/menu.php';
 	?>
 		<div class="jumbotron">
-			<table>
+			<table class="table table-striped">
 			<thead>
-				
+				<th>Libéllé</th>
+				<th>Catégorie</th>
+				<th></th>
 			</thead>
 				<tbody>
 					<?php
-						foreach ($list as $key => $value):
+						foreach ($res as $key => $value):
 					?>
 						<tr>
-							
+							<td><?php echo $value['pdt_title'];?></td>
+							<td><?php echo $value['cat_name'];?></td>
+							<td><a href="detail_product.php?id=<?php echo $value['pdt_id'];?>">Voir plus...</a></td>
 						</tr>
 					<?php
 						endforeach;
