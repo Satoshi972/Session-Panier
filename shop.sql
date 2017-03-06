@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Client :  127.0.0.1
--- Généré le :  Lun 06 Mars 2017 à 15:52
+-- Généré le :  Lun 06 Mars 2017 à 20:47
 -- Version du serveur :  10.1.21-MariaDB
 -- Version de PHP :  7.1.1
 
@@ -41,6 +41,28 @@ INSERT INTO `category` (`cat_id`, `cat_name`) VALUES
 (3, 'Musique'),
 (4, 'Objet divers'),
 (5, 'DVD/Blu-Ray');
+
+-- --------------------------------------------------------
+
+--
+-- Structure de la table `orders`
+--
+
+CREATE TABLE `orders` (
+  `ord_id` int(11) NOT NULL,
+  `ord_products` text NOT NULL,
+  `ord_date` datetime NOT NULL,
+  `ord_usr_id` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 ROW_FORMAT=COMPACT;
+
+--
+-- Contenu de la table `orders`
+--
+
+INSERT INTO `orders` (`ord_id`, `ord_products`, `ord_date`, `ord_usr_id`) VALUES
+(1, 'ArrayArrayArray', '2017-03-06 14:52:29', 1),
+(2, '12.55', '2017-03-06 14:56:54', 1),
+(3, 'Docteur Strange<br>air max classic1<br>172<br>180', '2017-03-06 14:57:44', 1);
 
 -- --------------------------------------------------------
 
@@ -105,6 +127,12 @@ ALTER TABLE `category`
   ADD PRIMARY KEY (`cat_id`);
 
 --
+-- Index pour la table `orders`
+--
+ALTER TABLE `orders`
+  ADD PRIMARY KEY (`ord_id`);
+
+--
 -- Index pour la table `products`
 --
 ALTER TABLE `products`
@@ -126,6 +154,11 @@ ALTER TABLE `users`
 --
 ALTER TABLE `category`
   MODIFY `cat_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+--
+-- AUTO_INCREMENT pour la table `orders`
+--
+ALTER TABLE `orders`
+  MODIFY `ord_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 --
 -- AUTO_INCREMENT pour la table `products`
 --
