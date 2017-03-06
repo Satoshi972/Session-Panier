@@ -46,6 +46,7 @@ if(!empty($_POST))
 							'prenom'=> $user['usr_firstname'],
 							'email' => $user['usr_email'],
 							);
+					$_SESSION['is_loged'] = true;
 				}
 				else 
 				{ 
@@ -83,7 +84,7 @@ if(!empty($_POST))
 				if(isset($_SESSION['nom']) && isset($_SESSION['prenom']) && isset($_SESSION['email']))
 				{
 					echo '<p class="success">Salut '.$_SESSION['prenom']. ' ' . $_SESSION['nom'];
-					echo '<br>Tu es déjà connecté :-)</p>';
+					//echo '<br>Tu es déjà connecté :-)</p>';
 				}
 			?>
 

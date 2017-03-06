@@ -1,4 +1,5 @@
 <?php 
+session_start();
 require_once 'inc/connect.php';
 
 $list = $bdd->prepare('SELECT * FROM products, category WHERE pdt_cat_id = cat_id');

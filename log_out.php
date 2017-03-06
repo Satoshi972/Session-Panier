@@ -5,7 +5,7 @@ if(isset($_GET['logout']) && ($_GET['logout'] == 'yes'))
 {
 	unset($_SESSION['nom'], $_SESSION['prenom'], $_SESSION['email']); 
 	session_destroy();
-	header('Location: index.php');
+	header('Location: log_in.php');
 	die();
 }
 
@@ -35,7 +35,7 @@ if(isset($_GET['logout']) && ($_GET['logout'] == 'yes'))
 					
 						<br><br>
 
-						<a href="deconnexion.php?logout=yes">Oui, je veux me déconnecter</a>
+						<a href="log_out.php?logout=yes">Oui, je veux me déconnecter</a>
 					</p>
 
 				<?php else: ?>

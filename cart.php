@@ -105,15 +105,18 @@ if (!$erreur)
 									echo "<td><a href=\"".htmlspecialchars("cart.php?action=suppression&l=".rawurlencode($_SESSION['panier']['libelleProduit'][$i]))."\">Supprimer</a></td>";
 									echo "</tr>";
 								}
-
+								# htmlspecialchars doc :  http://php.net/manual/fr/function.htmlspecialchars.php
 								echo "<tr><td colspan=\"2\"> </td>";
 								echo "<td colspan=\"2\">";
 								echo "Total : ".MontantGlobal();
 								echo "</td></tr>";
 
 								echo "<tr><td colspan=\"4\">";
-								echo "<input type=\"submit\" value=\"Rafraichir\"/>";
+								echo "<input type=\"submit\" class='btn btn-default' value=\"Rafraichir\"/>";
 								echo "<input type=\"hidden\" name=\"action\" value=\"refresh\"/>";
+
+								#bouton pour envoyer sur mon récapitulatif de commande et valider mon achat
+								echo '<a href="order_list.php">Commander</button></a>';
 
 								echo "</td></tr>";
 							}

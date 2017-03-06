@@ -111,6 +111,17 @@ function supprimePanier()
    unset($_SESSION['panier']);
 }
 
+
+function compterArticles()
+{
+   if (isset($_SESSION['panier']))
+   return count($_SESSION['panier']['libelleProduit']);
+   else
+   return 0;
+
+}
+
+
 function isVerrouille()
 {
    if (isset($_SESSION['panier']) && $_SESSION['panier']['verrou'])
