@@ -11,7 +11,6 @@
 		if($select->execute())
 		{
 			$produit = $select->fetch(PDO::FETCH_ASSOC);
-			var_dump($produit);
 		}
 		else 
 		{
@@ -42,24 +41,43 @@
 				echo $errors;
 			}
 			if(isset($produit)):
-				foreach($produit as $key => $value):
-					if(!$key=='pdt_id'):
 				?>
 						<div class="list-group-item">
-						<h4 class="list-group-item-heading"><?php echo $key?></h4>
-						<p class="list-group-item-text"><?php echo $value?></p>
+						<h4 class="list-group-item-heading">Cover</h4>
+						<p class="list-group-item-text"><img class="img-responsive img-rounded" src="<?php echo $produit['pdt_picture']?>" alt="picture"></p>
 						</div>	
-				<?php
-				endif;
-				endforeach;
-				?>
+						<div class="list-group-item">
+						<h4 class="list-group-item-heading">Libelé</h4>
+						<p class="list-group-item-text"><?php echo $produit['pdt_title']?></p>
+						</div>	
+						<div class="list-group-item">
+						<h4 class="list-group-item-heading">Catégorie</h4>
+						<p class="list-group-item-text"><?php echo $produit['cat_name']?></p>
+						</div>	
+						<div class="list-group-item">
+						<h4 class="list-group-item-heading">Réfrérence</h4>
+						<p class="list-group-item-text"><?php echo $produit['pdt_ref']?></p>
+						</div>	
+						<div class="list-group-item">
+						<h4 class="list-group-item-heading">Description</h4>
+						<p class="list-group-item-text"><?php echo $produit['pdt_description']?></p>
+						</div>	
+						<div class="list-group-item">
+						<h4 class="list-group-item-heading">Prix</h4>
+						<p class="list-group-item-text"><?php echo $produit['pdt_price']?></p>
+						</div>	
 				<div class="text-center">
 					<a href="list.php">
 						<input type="sumbit" class="btn btn-default" value="Retour">
 					</a>
-					<a href="">
+					<a href="cart.php?action=ajout&amp;l=<?php echo $produit['pdt_title']?>&amp;q=1&amp;p=<?php echo $produit['pdt_price']?>" return false;">
 						<button class="btn btn-info">Ajouter au panier</button>
 					</a>
+					<!--
+					<a href="cart.php?action=ajout&amp;l=LIBELLEPRODUIT&amp;q=QUANTITEPRODUIT&amp;p=PRIXPRODUIT" onclick="window.open(this.href, '', 'toolbar=no, location=no, directories=no, status=yes, scrollbars=yes, resizable=yes, copyhistory=no, width=600, height=350'); return false;">
+						<button class="btn btn-info">Ajouter au panier</button>
+					</a>
+					-->
 				</div>
 				<?php
 			endif;

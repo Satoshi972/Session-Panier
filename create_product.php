@@ -2,6 +2,13 @@
 
 require_once 'inc/connect.php';
 
+#fonction pour calculer le ttc
+function ttc($ht,$tva)
+{
+	return $ttc = $ht * $tva + $ht;
+}
+
+
 #définition de quelques variabl pour gerer les images
 $maxSize = (1024 * 1000) * 2; // Taille maximum du fichier
 $uploadDir = 'uploads/'; // Répertoire d'upload
@@ -40,7 +47,7 @@ if(!empty($_POST))
 	{
 		$error[] = 'Le prix doit être indiqué';
 	}
-	if(!is_numeric($post['tva']) || $post['tva'] < 5.5 ||$post['tva']>20)
+	if(!is_numeric($post['tva']) || $post['tva'] < 0 ||$post['tva'] > 1)
 	{
 		$error[] = 'La tva doit être indiqué';
 	}
@@ -98,12 +105,13 @@ if(!empty($_POST))
 	#s'il n'y a pas d'erreur
 	if(count($errors) === 0)
 	{
-		$insert = $bdd->prepare('INSERT INTO products (pdt_title, pdt_description, pdt_ref, pdt_ht, pdt_tva, pdt_picture, pdt_cat_id) VALUES(:pdt_title, :pdt_description, :pdt_ref, :pdt_ht, :pdt_tva, :pdt_picture, :pdt_cat_id)');
+		$insert = $bdd->prepare('INSERT INTO products (pdt_title, pdt_description, pdt_ref, pdt_ht, pdt_tva, pdt_price, pdt_picture, pdt_cat_id) VALUES(:pdt_title, :pdt_description, :pdt_ref, :pdt_ht, :pdt_tva, :pdt_price,  :pdt_picture, :pdt_cat_id)');
 		$insert->bindValue(':pdt_title',$post['title']);
 		$insert->bindValue(':pdt_description',$post['description']);
 		$insert->bindValue(':pdt_ref',$post['ref']);
-		$insert->bindValue(':pdt_ht',$post['ht'],PDO::PARAM_INT);
-		$insert->bindValue(':pdt_tva',$post['tva'],PDO::PARAM_INT);
+		$insert->bindValue(':pdt_ht',$post['ht']);
+		$insert->bindValue(':pdt_tva',$post['tva']);
+		$insert->bindValue(':pdt_price',ttc($post['ht'],$post['tva']));
 		$insert->bindValue(':pdt_picture',$uploadDir.$newPictureName);
 		$insert->bindValue(':pdt_cat_id',$post['category'],PDO::PARAM_INT);
 
@@ -165,9 +173,9 @@ if(!empty($_POST))
 			<label for="tva">Choix de TVA</label>
 				<select name="tva" id="tva" class="selectpicker">
 					<option>---Sélectionnez un taux---</option>
-					<option value="5.5">5%</option>
-					<option value="10">10%</option>
-					<option value="20">20%</option>
+					<option value="0.05">5%</option>
+					<option value="0.1">10%</option>
+					<option value="0.2">20%</option>
 				</select>
 			</div>
 			
