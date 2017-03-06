@@ -9,7 +9,7 @@ function creationPanier()
       $_SESSION['panier']['libelleProduit'] = array();
       $_SESSION['panier']['qteProduit'] = array();
       $_SESSION['panier']['prixProduit'] = array();
-      $_SESSION['panier']['verrou'] = false; //protéger le panier en mode paiement
+      //$_SESSION['panier']['verrou'] = false; //protéger le panier en mode paiement
    }
    return true; // revoie true par souci, en cas d'utilisation dans des if
 }
@@ -17,7 +17,7 @@ function creationPanier()
 function ajouterArticle($libelleProduit,$qteProduit,$prixProduit)
 {
    //Si le panier existe
-   if (creationPanier() && !isVerrouille())
+   if (creationPanier())
    {
       //Si le produit existe déjà on ajoute seulement la quantité
       $positionProduit = array_search($libelleProduit, $_SESSION['panier']['libelleProduit']);
@@ -43,7 +43,7 @@ function ajouterArticle($libelleProduit,$qteProduit,$prixProduit)
 function supprimerArticle($libelleProduit)
 {
    //Si le panier existe
-   if (creationPanier() && !isVerrouille())
+   if (creationPanier())
    {
       //Nous allons passer par un panier temporaire
       $tmp=array();
@@ -75,7 +75,7 @@ function supprimerArticle($libelleProduit)
 function modifierQTeArticle($libelleProduit,$qteProduit)
 {
    //Si le panier éxiste
-   if (creationPanier() && !isVerrouille())
+   if (creationPanier())
    {
       //Si la quantité est positive on modifie sinon on supprime l'article
       if ($qteProduit > 0)
