@@ -116,7 +116,7 @@ if (!$erreur)
 								echo "<input type=\"hidden\" name=\"action\" value=\"refresh\"/>";
 
 								#bouton pour envoyer sur mon récapitulatif de commande et valider mon achat
-								echo '<a href="order_list.php">Commander</button></a>';
+								echo '<a href="order_list.php"><input type="button" class="btn btn-primary" value="Commander"></a>';
 
 								echo "</td></tr>";
 							}

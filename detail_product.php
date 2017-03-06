@@ -64,10 +64,10 @@
 						</div>	
 						<div class="list-group-item">
 						<h4 class="list-group-item-heading">Prix</h4>
-						<p class="list-group-item-text"><?php echo $produit['pdt_price']?></p>
+						<p class="list-group-item-text"><?php echo $produit['pdt_price']." €"?></p>
 						</div>	
 				<div class="text-center">
-					<a href="list.php">
+					<a href="list_product.php">
 						<input type="sumbit" class="btn btn-default" value="Retour">
 					</a>
 					<a href="cart.php?action=ajout&amp;l=<?php echo $produit['pdt_title']?>&amp;q=1&amp;p=<?php echo $produit['pdt_price']?>" return false;">
