@@ -124,22 +124,6 @@ if (!$erreur)
 						?>
 					</table>
 				</form>
-				<!--
-				<div class="text-center">
-					<a href="delete.php?id=<?php //echo $idGet;?>">
-					<input type="submit" class="btn btn-danger" value="supprimer" onclick="delete($getId)">
-					</a>
-					<a href="update.php?id=<?php //echo $idGet;?>"">
-						<input type="sumbit" class="btn btn-primary" value="Modifier">
-					</a>
-					<a href="list.php">
-						<input type="sumbit" class="btn btn-default" value="Retour">
-					</a>
-					<a href="">
-						<button class="btn btn-info">Ajouter au panier</button>
-					</a>
-				</div>
-				-->
 		</div>
 	</main>
 	<?php include 'inc/script.php' ;?>
