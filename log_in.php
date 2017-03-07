@@ -5,6 +5,7 @@ session_start();
 require_once 'inc/connect.php';
 
 $err = array();
+$display = true;
 
 if(!empty($_POST))
 {
@@ -46,7 +47,8 @@ if(!empty($_POST))
 							'prenom'=> $user['usr_firstname'],
 							'email' => $user['usr_email'],
 							);
-					$_SESSION['is_loged'] = true;
+					$_SESSION['is_logged'] = true;
+					$display = false;
 				}
 				else 
 				{ 
@@ -86,6 +88,7 @@ if(!empty($_POST))
 					echo '<p class="success">Salut '.$_SESSION['prenom']. ' ' . $_SESSION['nom'];
 					//echo '<br>Tu es déjà connecté :-)</p>';
 				}
+				if(isset($display) && $display):
 			?>
 
 			<form method="POST" class="form-horizontal">
@@ -106,6 +109,7 @@ if(!empty($_POST))
 				</div>
 				
 			</form>
+		<?php endif; ?>
 		</div>
 		
 	</main>

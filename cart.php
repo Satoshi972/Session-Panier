@@ -17,11 +17,14 @@ if($action !== null)
    $l = (isset($_POST['l'])? $_POST['l']:  (isset($_GET['l'])? $_GET['l']:null )) ;
    $p = (isset($_POST['p'])? $_POST['p']:  (isset($_GET['p'])? $_GET['p']:null )) ;
    $q = (isset($_POST['q'])? $_POST['q']:  (isset($_GET['q'])? $_GET['q']:null )) ;
+   $id = (isset($_POST['id'])? $_POST['id']:  (isset($_GET['id'])? $_GET['id']:null )) ;
 
    //Suppression des espaces verticaux
    $l = preg_replace('#\v#', '',$l);
    //On verifie que $p soit un float
    $p = floatval($p);
+
+   $id = (int)$id;
 
    //On traite $q qui peut etre un entier simple ou un tableau d'entier
     
@@ -44,7 +47,7 @@ if (!$erreur)
    switch($action)
    {
       Case "ajout":
-         ajouterArticle($l,$q,$p);
+         ajouterArticle($l,$q,$p,$id);
          break;
 
       Case "suppression":
@@ -114,10 +117,17 @@ if (!$erreur)
 								echo "<tr><td colspan=\"4\">";
 								echo "<input type=\"submit\" class='btn btn-default' value=\"Rafraichir\"/>";
 								echo "<input type=\"hidden\" name=\"action\" value=\"refresh\"/>";
-
+								if(isset($_SESSION['is_logged']) && $_SESSION['is_logged'])
+								{
 								#bouton pour envoyer sur mon récapitulatif de commande et valider mon achat
-								echo '<a href="order_list.php"><input type="button" class="btn btn-primary" value="Commander"></a>';
-
+								echo '<a href="order.php"><input type="button" class="btn btn-primary" value="Commander"></a>';
+								}
+								else
+								{
+									echo '<a href="log_in.php">';
+									echo "<button class='btn btn-info'>Connectez vous pour finaliser l'achat</button>";
+									echo '</a>';
+								}
 								echo "</td></tr>";
 							}
 						}

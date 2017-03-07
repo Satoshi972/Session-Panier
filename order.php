@@ -6,7 +6,7 @@ require_once 'inc/cart_function.php';
 
 $display = true;
 
-if(isset($_SESSION['is_loged']) && $_SESSION['is_loged'])
+if(isset($_SESSION['is_logged']) && $_SESSION['is_logged'])
 {
 	if(!empty($_POST) && $_POST['order'] =='order')
 	{
@@ -15,7 +15,7 @@ if(isset($_SESSION['is_loged']) && $_SESSION['is_loged'])
 		$order->bindValue(':ord_usr_id', $_SESSION['id']);
 		if($order->execute())
 		{
-			$success = 'Commande effectuer';
+			$success = '<p class="alert alert-success">Commande effectuée</p>';
 			$display = false;
 		}
 		else
@@ -36,7 +36,7 @@ if(isset($_SESSION['is_loged']) && $_SESSION['is_loged'])
 	<?php include 'inc/menu.php'; ?>
 		<div class="jumbotron">
 		<?php if(isset($display) && $display): ?>
-			<form method="post" action="order_list.php">
+			<form method="post" action="order.php">
 				<table class="table table-striped">
 					<legend class="text-center">
 						Recapitulatif
@@ -73,7 +73,7 @@ if(isset($_SESSION['is_loged']) && $_SESSION['is_loged'])
 							echo "<tr><td>";
 							echo "<a href='cart.php'><input class='btn btn-default' type=\"submit\" value=\"Annuler\"/></a>";
 							#bouton pour envoyer sur mon récapitulatif de commande et valider mon achat
-							echo '<a href="order_list.php"><button class="btn btn-primary">Valider</button><input type="hidden" name="order" value="order" ></a>';
+							echo '<a href="order.php"><button class="btn btn-primary">Valider</button><input type="hidden" name="order" value="order" ></a>';
 
 							echo "</td></tr>";
 						}

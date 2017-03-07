@@ -70,7 +70,7 @@
 					<a href="list_product.php">
 						<input type="sumbit" class="btn btn-default" value="Retour">
 					</a>
-					<a href="cart.php?action=ajout&amp;l=<?php echo $produit['pdt_title']?>&amp;q=1&amp;p=<?php echo $produit['pdt_price']?>" return false;">
+					<a href="cart.php?action=ajout&amp;l=<?php echo $produit['pdt_title']?>&amp;q=1&amp;p=<?php echo $produit['pdt_price']?>&amps;id=<?php echo $produit['pdt_id']; ?>" return false;">
 						<button class="btn btn-info">Ajouter au panier</button>
 					</a>
 					<!--
