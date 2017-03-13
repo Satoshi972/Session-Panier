@@ -2,12 +2,8 @@
 
 session_start();
 require_once 'inc/connect.php';
-
+require_once 'inc/cart_function.php';
 #fonction pour calculer le ttc
-function ttc($ht,$tva)
-{
-	return $ttc = $ht * $tva + $ht;
-}
 
 
 #définition de quelques variabl pour gerer les images
@@ -81,7 +77,6 @@ if(!empty($_POST))
 					$errors[] = 'Erreur lors de l\'upload de la photo';
 				}
 			}
-
 			else 
 			{
 				$errors[] = 'La taille du fichier excède 2 Mo';

@@ -4,7 +4,7 @@
 
 	if(isset($_GET['id']) && !empty($_GET['id']))
 	{
-		$idGet = (int)$_GET['id'];
+		$idGet = (int)$_GET['id']; //alt intval($_GET['id'])
 		$select = $bdd->prepare('SELECT * FROM products, category WHERE pdt_cat_id = cat_id AND pdt_id= :id');
 		$select ->bindValue(':id',$idGet,PDO::PARAM_INT);
 

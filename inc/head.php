@@ -7,6 +7,7 @@
     <!-- Latest compiled and minified CSS For Bootstrap select -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.12.2/css/bootstrap-select.min.css">
 
+
     <!-- Style CSS -->
     <!--
     <link rel="stylesheet" href="assets/css/style.css">

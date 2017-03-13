@@ -1,4 +1,19 @@
 <?php 
+function ttc($ht,$tva = 20)
+{
+   if(!is_numeric($ht) || empty($ht))
+   {
+      trigger_error('Le prix hors taxe doit être de type numérique ou vide !', E_USER_WARNING);
+      return false;
+   }
+   $taux = [0.05,0.1,0.2];
+   if(!in_array($tva, $taux))
+   {
+      trigger_error('Le taux de tva n\'est pas valide !', E_USER_WARNING).
+      return false;
+   }
+   return $ttc = $ht * $tva + $ht;
+}
 
 # source http://jcrozier.developpez.com/articles/web/panier/
 function creationPanier()
